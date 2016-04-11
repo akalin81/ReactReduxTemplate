@@ -97,7 +97,6 @@ export function loginSucessPrev(token){
 
 export function loginUserFailure(error) {
   localStorage.removeItem('token');
-  alert('wrong password brah')
   return {
     type: LOGIN_USER_FAILURE,
 
@@ -118,7 +117,7 @@ export function loginUser(email, password, redirect="/") {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-                body: JSON.stringify({email: email, password: password})
+                body: JSON.stringify({username: email, password: password})
             })
             .then(checkHttpStatus)
             .then(parseJSON)
@@ -127,7 +126,8 @@ export function loginUser(email, password, redirect="/") {
                   console.log("Token From server: ");
                   console.log(response);
                     let decoded = jwtDecode(response.token);
-
+                    console.log('This is decoded: ');
+                    console.log(decoded._doc.username);
                     dispatch(loginSuccess(response.token));
                     browserHistory.push(redirect);
                 } catch (e) {
@@ -145,6 +145,48 @@ export function loginUser(email, password, redirect="/") {
             })
     }
 }
+
+export function registerUser(email, password, redirect="/") {
+    return function(dispatch) {
+        dispatch(loginUserRequest());
+          console.log(email + '...' + password);
+        return fetch('http://localhost:3000/auth/register/', {
+            method: 'post',
+            credentials: 'include',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+                body: JSON.stringify({username: email, password: password})
+            })
+            .then(checkHttpStatus)
+            .then(parseJSON)
+            .then(response => {
+                try {
+                  //  let decoded = jwtDecode(response.token);
+                  // console.log("111");
+                  //  dispatch(loginSucessPrev(response.token));
+                       dispatch(loginUser(email, password, '/test'));
+                    //   console.log("2222 ");
+                    //   dispatch(loginSuccess(response.token));
+                    //   console.log("3333 ");
+                    // browserHistory.push('/test');
+                } catch (e) {
+                    dispatch(loginUserFailure({
+                        response: {
+                            status: 403,
+                            statusText: e
+                        }
+                    }));
+                }
+            })
+            .catch(error => {
+
+                dispatch(loginUserFailure(error));
+            })
+    }
+}
+
 
 
 function shouldFetchPosts(state, reddit) {

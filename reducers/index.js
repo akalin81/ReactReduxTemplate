@@ -10,8 +10,9 @@ function auth (state = { token : null, userName : null, isAuthenticated: false }
     case LOGIN_GOOD:
     {
       return Object.assign({}, state, {
+        isAuthenticating: false,
         token: action.token,
-        userName: jwtDecode(action.token).userName,
+        userName: jwtDecode(action.token)._doc.username,
         isAuthenticated: true
 
       });

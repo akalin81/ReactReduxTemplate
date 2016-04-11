@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(actions, dispatch)
 })
 
-// export default connect(state => ({
+// export default connect(state => ({  
 //     token: state.auth.token,
 //     userName: state.auth.userName,
 //     isAuthenticated: state.auth.isAuthenticated

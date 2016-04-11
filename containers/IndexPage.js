@@ -10,7 +10,9 @@ class IndexPage extends Component {
     super(props)
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      usernameReg: '',
+      passwordReg: ''
     }
 
   }
@@ -30,20 +32,49 @@ class IndexPage extends Component {
     this.setState({password: e.target.value})
   }
 
+
+  // register
+
+  register(e){
+    e.preventDefault();
+    //console.log(this.state.username + '/' + this.state.password);
+    this.props.actions.registerUser(this.state.usernameReg, this.state.passwordReg, '/test');
+  }
+
+  onChangeUserReg(e)
+  {
+    this.setState({usernameReg: e.target.value})
+  }
+  onChangePassReg(e)
+  {
+    this.setState({passwordReg: e.target.value})
+  }
+
+
+
   render() {
 
     return (
       <div>
           <form role='form'>
             <div>
+              <h4>Sign In</h4>
               <input type='text' placeholder='Username' value={this.state.username} onChange={this.onChangeUser.bind(this)}/>
               <input type='password' placeholder='Password' value={this.state.password} onChange={this.onChangePass.bind(this)}/>
               <button type='submit' onClick={this.login.bind(this)}>Submit</button>
             </div>
           </form>
+            <div>
+              <h4>Register</h4>
+              <input type='text' placeholder='Username' value={this.state.usernameReg} onChange={this.onChangeUserReg.bind(this)}/>
+              <input type='password' placeholder='Password' value={this.state.passwordReg} onChange={this.onChangePassReg.bind(this)}/>
+              <button type='submit' onClick={this.register.bind(this)}>Submit</button>
+            </div>
+          <form role='form'>
 
-
-        I am in index bitch <Link to={`/test`}>test</Link>
+          </form>
+          <br/><br/>
+        Try to click on  <Link to={`/test`}>protected page!.. Do it!! I dare you!</Link>
       </div>
     )
   }
