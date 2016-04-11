@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { selectReddit, fetchPostsIfNeeded, invalidateReddit } from '../actions'
 import Picker from '../components/Picker'
 import Posts from '../components/Posts'
-
 import { Link } from 'react-router'
 
 class App extends Component {
