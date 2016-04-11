@@ -21,7 +21,7 @@ class TestPage extends Component {
     return (
       <div>
         <div>
-          I am { this.props.userName }, and I am totally { this.props.isAuthenticated ? 'valid' : 'not valid' }
+          I am { this.props.userName }, and  I am totally { this.props.isAuthenticated ? 'valid' : 'not valid' }
         </div>
         <button onClick={this.logout.bind(this)}>sign out</button>
       </div>
@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(actions, dispatch)
 })
 
-// export default connect(state => ({  
+// export default connect(state => ({
 //     token: state.auth.token,
 //     userName: state.auth.userName,
 //     isAuthenticated: state.auth.isAuthenticated
