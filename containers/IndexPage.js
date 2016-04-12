@@ -51,55 +51,16 @@ class IndexPage extends Component {
   }
 
   render () {
-    var headStyle = {
-        color: 'white',
-        backgroundColor:'black',
-        textAlign: 'Left',
-        verticalAlign: 'Top',
-        paddingLeft:20,
-        paddingTop:2
-      };
-      var headStyleRight = {
-          color: 'white',
-          backgroundColor:'black',
-          textAlign: 'Right',
-          verticalAlign: 'Top',
-          paddingRight:20,
-          paddingTop:2
-        };
-
-      var jumboStyle = {
-          color: 'white',
-          backgroundColor:'black',
-          textAlign: 'Center',
-          verticalAlign: 'Top',
-          paddingLeft:20,
-          paddingTop:10,
-          paddingBottom:10,
-          paddingRight:20
-        };
-
-    var midStyle = {
-      maxWidth:1200
-
-    }
-    var divStyle = {
-        color: 'black',
-        fontSize: 14,
-        paddingTop:10,
-        textAlign: 'Left',
-        verticalAlign: 'Top'
-      };
     return (
         <div>
         <Row className="show-grid">
-          <Col xs={12} style={headStyle}>
+          <Col xs={12} className="mainHead">
             <Col xs={1}>
 
             </Col>
-            <Col xs={10}  style={midStyle}>
-                <Col xs={10}>My Company.com</Col>
-                <Col xs={2} style={headStyleRight}>Beta 1.0</Col>
+            <Col xs={10} >
+                <Col xs={10} className="mainHeadLeft">My Company.com</Col>
+                <Col xs={2} className="mainHeadRight">Beta 1.0</Col>
             </Col>
             <Col xs={1}>
 
@@ -107,11 +68,11 @@ class IndexPage extends Component {
           </Col>
         </Row>
         <Row className="show-grid">
-          <Col xs={12} style={divStyle}>
+          <Col xs={12} className="mainBody" >
             <Col xs={1}>
 
             </Col>
-            <Col xs={10} style={midStyle}>
+            <Col xs={10} >
               <Col xs={9}>
               <Carousel>
                   <Carousel.Item>

@@ -1,0 +1,29 @@
+body {
+  max-width: 1500px;
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+.mainHead {
+  color: #4d6600;
+  background-color: #ace600;
+}
+
+.mainHeadLeft {
+  text-align: left;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.mainHeadRight {
+  text-align: right;
+  padding-top: 5px;
+  vertical-align:bottom;
+
+  font-size: 8px;
+}
+
+.mainBody {
+
+  padding-top: 10px;
+}
